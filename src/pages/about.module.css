@@ -17,6 +17,7 @@
 
 .list_decoration {
   list-style-type: none;
+  padding: 0;
 }
 
 .picture {
