@@ -78,6 +78,10 @@ nav a span {
   padding: 1rem;
 }
 
+.product__detail {
+  align-self: center;
+}
+
 .product__card {
   justify-content: center;
   border-radius: 0.5rem;
@@ -98,4 +102,28 @@ nav a span {
 
 img {
   width: 100%;
+}
+
+@media (min-width: 640px) {
+  .product__detail {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    min-width: 70vw;
+    gap: 2rem;
+    margin: 0 auto;
+  }
+  .product__detail div:first-of-type {
+    display: flex;
+  }
+
+  .product__detail img {
+    min-width: 200px;
+    max-width: 300px;
+    align-self: center;
+  }
+
+  .product__detail div:last-of-type {
+    text-align: justify;
+  }
 }

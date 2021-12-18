@@ -13,24 +13,26 @@ export default function ProductDetail({ products }) {
     return (
       <>
         <div className="product__detail">
-          <h2>{product ? product.title : null}</h2>
-
           <div>
-            <Rating
-              size={`1.25rem`}
-              initialValue={Math.round(product.rating.rate)}
-              readonly={true}
-            />
-            {product.rating.count} reviews
+            <img src={product.image} />
           </div>
-          <img src={product.image} />
 
-          <h2>Price: $ {product.price}</h2>
-
-          <h3>Description</h3>
-          <p>{product.description}</p>
           <div>
-            <FontAwesomeIcon icon={faTag} /> {product.category}
+            <h2>{product ? product.title : null}</h2>
+            <h2>Price: $ {product.price}</h2>
+            <div>
+              <Rating
+                size={`1.25rem`}
+                initialValue={Math.round(product.rating.rate)}
+                readonly={true}
+              />
+              {product.rating.count} reviews
+            </div>
+            <h3>Description</h3>
+            <p>{product.description}</p>
+            <div>
+              <FontAwesomeIcon icon={faTag} /> {product.category}
+            </div>
           </div>
         </div>
       </>
