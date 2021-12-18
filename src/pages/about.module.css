@@ -1,0 +1,25 @@
+.container {
+  color: #fff;
+  background-color: #303030;
+  line-height: 1.5rem;
+  height: 100%;
+}
+
+.links {
+  color: #66d9ef;
+  padding: 0.25rem 0.15rem;
+}
+
+.links:hover {
+  color: #303030;
+  background-color: #66d9ef;
+}
+
+.list_decoration {
+  list-style-type: none;
+}
+
+.picture {
+  height: 40vh;
+  width: auto;
+}
