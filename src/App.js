@@ -5,6 +5,8 @@ import axios from 'axios';
 import Home from './pages/Home';
 import About from './pages/About';
 import ProductDetail from './pages/ProductDetail';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -22,7 +24,14 @@ function App() {
     <>
       <BrowserRouter>
         <nav>
-          <Link to="/">Home</Link> | <Link to="/about">About</Link>
+          <Link to="/">
+            <FontAwesomeIcon icon={faHome} />
+            <span>Home</span>
+          </Link>
+          <Link to="/about">
+            <FontAwesomeIcon icon={faUserCircle} />
+            <span>About me</span>
+          </Link>
         </nav>
         <Routes>
           <Route path="/" element={<Home products={products} />}></Route>

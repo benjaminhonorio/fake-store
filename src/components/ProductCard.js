@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function ProductCard({ product }) {
-  const [count, setCount] = useState(Math.floor(Math.random() * 100));
+  const [count, setCount] = useState(Math.floor(Math.random() * 150));
 
   useEffect(() => {
     if (count === 0) return;
@@ -21,15 +21,18 @@ export default function ProductCard({ product }) {
 
   return (
     <>
-      {/* <img src={product.image} /> */}
-      <h3>{product.title}</h3>
-      <div>
-        <span>{`00:${minutesDisplay}:${displaySeconds}`}</span>
-        {count ? (
-          <Link to={`/products/${product.id}`} key={product.id}>
-            Go to Detail
+      <div className="product">
+        <img src={product.image} />
+        <h3>{product.title}</h3>
+        <div className="product__callToAction">
+          <span>{`00:${minutesDisplay}:${displaySeconds}`}</span>
+          <Link
+            className={`${!count ? 'disabled' : null}`}
+            to={`/products/${product.id}`}
+            key={product.id}>
+            {`${!count ? 'Too late' : ' Go to Detail'}`}
           </Link>
-        ) : null}
+        </div>
       </div>
     </>
   );

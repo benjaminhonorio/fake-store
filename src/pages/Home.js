@@ -5,7 +5,7 @@ export default function Home({ products }) {
   return (
     <>
       <h2>Products</h2>
-      <div>
+      <div className="products">
         {products &&
           products.map((product) => {
             return <ProductCard key={product.id} product={product} />;
