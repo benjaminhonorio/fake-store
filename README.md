@@ -11,18 +11,16 @@ This project puts into practice what I've learnt during half way the full-time t
 
 ## Installation
 
-Go to root and do:
+Clone the repo and cd into the project folder
 
-`npm install`
+`git clone git@github.com:benjaminhonorio/fake-store.git`
 
-## Run Server
-
-In development I used json-server with a json file to serve data to not bother [fakestore api](https://fakestoreapi.com/) with infinite requests. So need to do:
-
-`npm run server`
+`cd fake-store`
 
 ## Run Application
 
-Open new terminal at root and do:
+Install dependencies and run the application
+
+`npm install`
 
 `npm start`
