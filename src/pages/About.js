@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReact } from '@fortawesome/free-brands-svg-icons';
-import { faNodeJs } from '@fortawesome/free-brands-svg-icons';
+import { faReact, faGithub, faNodeJs } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import styles from './about.module.css';
 
 export default function About() {
@@ -25,13 +25,13 @@ export default function About() {
           <li>- Team work and soft skills are as valuable as technical skills</li>
         </ul>
         <p>
-          <strong>Email:</strong>
+          <FontAwesomeIcon icon={faEnvelope} />
           <a className={styles.links} href="mailto:benjaminhonorio.12@gmail.com">
             benjaminhonorio.12@gmail.com
           </a>
         </p>
         <p>
-          <strong>Github:</strong>
+          <FontAwesomeIcon icon={faGithub} />
           <a className={styles.links} href="https://github.com/benjaminhonorio">
             benjaminhonorio
           </a>

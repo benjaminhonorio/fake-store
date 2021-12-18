@@ -12,7 +12,7 @@ function App() {
   const [products, setProducts] = useState([]);
 
   const dataHook = () => {
-    axios.get('http://localhost:3001/products').then((response) => {
+    axios.get('https://fakestoreapi.com/products').then((response) => {
       setProducts(response.data);
     });
   };

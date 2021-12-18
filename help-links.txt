@@ -1,0 +1,18 @@
+instructions for new version create-react-app (5.0.0)
+react-bootstrap.github.io
+
+eslint/prettier together
+https://dev.to/knowankit/setup-eslint-and-prettier-in-react-app-357b
+
+remove error: "missing props validation"
+https://newbedev.com/react-eslint-error-missing-in-props-validation
+
+remove error: "missing cr"
+https://stackoverflow.com/questions/53516594/why-do-i-keep-getting-delete-cr-prettier-prettier
+
+timer
+https://stackoverflow.com/questions/36299174/setinterval-in-a-react-app
+https://stackoverflow.com/questions/40885923/countdown-timer-in-react
+
+readme
+https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax

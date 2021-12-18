@@ -21,7 +21,7 @@ export default function ProductCard({ product }) {
 
   return (
     <>
-      <div className="product">
+      <div className="product__card">
         <img src={product.image} />
         <h3>{product.title}</h3>
         <div className="product__callToAction">
