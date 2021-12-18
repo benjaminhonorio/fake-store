@@ -24,3 +24,7 @@ Install dependencies and run the application
 `npm install`
 
 `npm start`
+
+## Watch live
+
+[demo](https://agitated-poincare-be14a4.netlify.app/)
