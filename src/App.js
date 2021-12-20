@@ -9,16 +9,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
+  const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
 
-  const dataHook = () => {
-    axios.get('https://fakestoreapi.com/products').then((response) => {
-      setProducts(response.data);
-    });
+  const getProducts = () => {
+    return axios.get('http://localhost:3001/products');
   };
-  useEffect(dataHook, []);
 
-  console.log('renders from App');
+  const load = async () => {
+    try {
+      setLoading(true);
+      const { data } = await getProducts();
+      setProducts(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(load, []);
 
   return (
     <>
@@ -34,7 +44,7 @@ function App() {
           </Link>
         </nav>
         <Routes>
-          <Route path="/" element={<Home products={products} />}></Route>
+          <Route path="/" element={<Home products={products} loading={loading} />}></Route>
           <Route path="/products/:productId" element={<ProductDetail products={products} />} />
           <Route path="about" element={<About />} />
           <Route
