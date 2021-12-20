@@ -13,7 +13,7 @@ function App() {
   const [products, setProducts] = useState([]);
 
   const getProducts = () => {
-    return axios.get('http://localhost:3001/products');
+    return axios.get('https://fakestoreapi.com/products');
   };
 
   const load = async () => {
