@@ -5,7 +5,7 @@ export default function Home({ products, loading }) {
     <>
       <h2>Products</h2>
       <div className="products">
-        {loading && 'Cargando productos...'}
+        {loading && 'Loading products...'}
         {products &&
           products.map((product) => {
             return <ProductCard key={product.id} product={product} />;
