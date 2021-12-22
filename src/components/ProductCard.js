@@ -2,17 +2,27 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function ProductCard({ product }) {
-  const [count, setCount] = useState(Math.floor(Math.random() * 150));
-
+  // Get counter for specific product from localStorage
+  const [count, setCount] = useState(Number(localStorage.getItem(`${product.id}`)));
+  // Keep running the timer
   useEffect(() => {
-    if (count === 0) return;
-    else {
+    if (count <= 0) {
+      localStorage.setItem(`${product.id}`, '0');
+      return;
+    } else {
       const id = setInterval(() => {
         setCount(count - 1);
+        localStorage.setItem(`${product.id}`, `${count}`);
       }, 1000);
-      return () => clearInterval(id);
+      return () => {
+        clearInterval(id);
+      };
     }
   }, [count]);
+
+  useEffect(() => {
+    setCount(Number(localStorage.getItem(`${product.id}`)));
+  }, [product]);
 
   const minutes = Math.floor(count / 60);
   const minutesDisplay = minutes < 10 ? `0${minutes}` : minutes;

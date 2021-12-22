@@ -17,6 +17,7 @@ function App() {
   };
 
   const load = async () => {
+    localStorage.clear();
     try {
       setLoading(true);
       const { data } = await getProducts();
