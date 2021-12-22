@@ -5,9 +5,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTag } from '@fortawesome/free-solid-svg-icons';
 
 export default function ProductDetail({ products }) {
-  let params = useParams();
-  const product = products.find((p) => p.id === Number(params.productId));
-  console.log('renders from product detail');
+  // Keep running the timer
+  const [timers, setTimers] = useState(localStorage);
+  let id = useParams().productId;
+  const product = products.find((p) => p.id === Number(id));
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      Object.entries(localStorage)
+        .filter(([key, value]) => Number(value) !== 0)
+        .forEach(([key, value]) => {
+          localStorage.setItem(key, Number(value) - 1);
+        });
+      setTimers(localStorage);
+    }, 1000);
+    return () => {
+      clearInterval(id);
+    };
+  }, [timers]);
 
   if (product) {
     return (
