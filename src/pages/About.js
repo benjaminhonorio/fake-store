@@ -1,27 +1,25 @@
 /* eslint-disable no-undef */
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReact, faGithub, faNodeJs } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import styles from './about.module.css';
 
 export default function About() {
-  // Keep running the timer
-  const [timers, setTimers] = useState(localStorage);
-
+  // Keep running the counters
   useEffect(() => {
     const id = setInterval(() => {
+      // Only decrease if they are not already set to 0
       Object.entries(localStorage)
         .filter(([key, value]) => Number(value) !== 0)
         .forEach(([key, value]) => {
           localStorage.setItem(key, Number(value) - 1);
         });
-      setTimers(localStorage);
     }, 1000);
     return () => {
       clearInterval(id);
     };
-  }, [timers]);
+  }, []);
 
   return (
     <>
