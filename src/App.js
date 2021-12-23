@@ -9,7 +9,7 @@ import ProductDetail from './pages/ProductDetail';
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState([]);
 
   const getProducts = () => {
     return axios.get('https://fakestoreapi.com/products');
