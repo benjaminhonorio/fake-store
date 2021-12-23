@@ -1,25 +1,23 @@
-import { Link } from 'react-router-dom';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import Home from './pages/Home';
 import About from './pages/About';
 import ProductDetail from './pages/ProductDetail';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
-  const [loading, setLoading] = useState(false);
-  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState(null);
 
   const getProducts = () => {
     return axios.get('https://fakestoreapi.com/products');
   };
 
-  const load = async () => {
+  const loadProducts = async () => {
     localStorage.clear();
     try {
-      setLoading(true);
       const { data } = await getProducts();
       setProducts(data);
     } catch (error) {
@@ -29,7 +27,7 @@ function App() {
     }
   };
 
-  useEffect(load, []);
+  useEffect(loadProducts, []);
 
   return (
     <>
