@@ -7,7 +7,7 @@ export default function Home({ products, loading }) {
   // else do nothing
   !localStorage.length && products.length
     ? products.forEach((product) => {
-        localStorage.setItem(product.id, Math.floor(Math.random() * 150));
+        localStorage.setItem(product.id, Math.floor(Math.random() * 150) + 30);
       })
     : null;
 
