@@ -4,7 +4,7 @@ import { Rating } from 'react-simple-star-rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTag } from '@fortawesome/free-solid-svg-icons';
 
-export default function ProductDetail({ products }) {
+export default function ProductDetail({ products, loading }) {
   let id = useParams().productId;
   const product = products?.find((p) => p.id === Number(id));
 
@@ -23,35 +23,36 @@ export default function ProductDetail({ products }) {
     };
   }, []);
 
-  if (product) {
-    return (
-      <>
-        <div className="product__detail">
-          <div>
-            <img src={product.image} />
-          </div>
+  return (
+    <>
+      <div className="product__detail">
+        {loading && 'Loading product...'}
+        {product && (
+          <>
+            <div>
+              <img src={product.image} />
+            </div>
 
-          <div>
-            <h2>{product ? product.title : null}</h2>
-            <h2>Price: $ {product.price}</h2>
             <div>
-              <Rating
-                size={`1.25rem`}
-                initialValue={Math.round(product.rating.rate)}
-                readonly={true}
-              />
-              {product.rating.count} reviews
+              <h2>{product ? product.title : null}</h2>
+              <h2>Price: $ {product.price}</h2>
+              <div>
+                <Rating
+                  size={`1.25rem`}
+                  initialValue={Math.round(product.rating.rate)}
+                  readonly={true}
+                />
+                {product.rating.count} reviews
+              </div>
+              <h3>Description</h3>
+              <p>{product.description}</p>
+              <div>
+                <FontAwesomeIcon icon={faTag} /> {product.category}
+              </div>
             </div>
-            <h3>Description</h3>
-            <p>{product.description}</p>
-            <div>
-              <FontAwesomeIcon icon={faTag} /> {product.category}
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  } else {
-    return null;
-  }
+          </>
+        )}
+      </div>
+    </>
+  );
 }

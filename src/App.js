@@ -44,7 +44,10 @@ function App() {
         </nav>
         <Routes>
           <Route path="/" element={<Home products={products} loading={loading} />}></Route>
-          <Route path="/products/:productId" element={<ProductDetail products={products} />} />
+          <Route
+            path="/products/:productId"
+            element={<ProductDetail products={products} loading={loading} />}
+          />
           <Route path="about" element={<About />} />
           <Route
             path="*"
