@@ -9,8 +9,7 @@ export default function ProductDetail() {
   let id = useParams().productId;
   const { products, loading, error } = useContext(StoreContext);
   const product = products?.find((p) => p.id === Number(id));
-
-  return (
+  return product ? (
     <>
       <div className="productDetail">
         {loading ? (
@@ -42,5 +41,7 @@ export default function ProductDetail() {
         {error && <h1>{error}</h1>}
       </div>
     </>
+  ) : (
+    <h2>No product was found</h2>
   );
 }
