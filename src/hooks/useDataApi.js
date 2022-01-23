@@ -1,19 +1,18 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-const useAxios = (url) => {
-  const [response, setResponse] = useState([]);
+const useDataApi = (url) => {
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const loadProducts = () => {
     setLoading(true);
-    setResponse([]);
     setError(null);
     const fetchURL = async () => {
       try {
-        const { data } = await axios.get(url);
-        setResponse(data);
+        const result = await axios.get(url);
+        setData(result.data);
       } catch (error) {
         setError('There was an error fetching the data');
         console.log(error);
@@ -26,7 +25,7 @@ const useAxios = (url) => {
 
   useEffect(loadProducts, []);
 
-  return [response, loading, error];
+  return [data, loading, error];
 };
 
-export default useAxios;
+export default useDataApi;
