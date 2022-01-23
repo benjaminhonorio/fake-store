@@ -9,11 +9,12 @@ export default function Home() {
     <>
       <h2>Products</h2>
       <div className="products">
-        {loading && 'Loading products...'}
-        {products.map((product, i) => {
-          return <ProductCard key={product.id} product={product} count={counters[i]} />;
-        })}
         {error && <Error text={error} />}
+        {loading
+          ? 'Loading products...'
+          : products.map((product, i) => {
+              return <ProductCard key={product.id} product={product} count={counters[i]} />;
+            })}
       </div>
     </>
   );

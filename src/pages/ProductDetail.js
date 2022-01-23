@@ -13,8 +13,9 @@ export default function ProductDetail() {
   return (
     <>
       <div className="productDetail">
-        {loading && 'Loading product...'}
-        {product && (
+        {loading ? (
+          'Loading product...'
+        ) : (
           <>
             <div>
               <img src={product.image} />
