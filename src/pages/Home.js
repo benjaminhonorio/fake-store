@@ -1,25 +1,19 @@
+import { useContext } from 'react';
+import { StoreContext } from '../context/StoreContext';
 import ProductCard from '../components/ProductCard';
+import Error from '../components/Error';
 
-export default function Home({ products, loading }) {
-  // Check if counters are not setup in localStorage and if products are loaded
-  // If both conditions met, then setup the timers in localStorage for every product
-  // use product ids as keys and a random number as value
-  // else do nothing
-  !localStorage.length && products.length
-    ? products.forEach((product) => {
-        localStorage.setItem(product.id, Math.floor(Math.random() * 150) + 30);
-      })
-    : null;
-
+export default function Home() {
+  const { products, loading, error, counters } = useContext(StoreContext);
   return (
     <>
       <h2>Products</h2>
       <div className="products">
         {loading && 'Loading products...'}
-        {products &&
-          products.map((product) => {
-            return <ProductCard key={product.id} product={product} />;
-          })}
+        {products.map((product, i) => {
+          return <ProductCard key={product.id} product={product} count={counters[i]} />;
+        })}
+        {error && <Error text={error} />}
       </div>
     </>
   );

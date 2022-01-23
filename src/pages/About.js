@@ -1,33 +1,16 @@
-/* eslint-disable no-undef */
-import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReact, faGithub, faNodeJs } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import styles from './about.module.css';
 
 export default function About() {
-  // Keep running the counters
-  useEffect(() => {
-    const id = setInterval(() => {
-      // Only decrease if they are not already set to 0
-      Object.entries(localStorage)
-        .filter(([key, value]) => Number(value) !== 0)
-        .forEach(([key, value]) => {
-          localStorage.setItem(key, Number(value) - 1);
-        });
-    }, 1000);
-    return () => {
-      clearInterval(id);
-    };
-  }, []);
-
   return (
     <>
       <div className={styles.container}>
         <h3>Hi I'm Benjamin!</h3>
         <p>I'm a biotechnologist turned out developer passionate for learning new technologies</p>
-        <img className={styles.picture} src={require('../IMG-20191205-WA0006.jpeg')} />
-        <ul className={styles.list_decoration}>
+        <img className={styles.picture} src="/pic.jpeg" />
+        <ul className={styles.listDecoration}>
           <p>
             <strong>Three things I learnt during this program</strong>
           </p>
