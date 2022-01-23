@@ -4,8 +4,10 @@ import useCounters from '../hooks/useCounters';
 
 export const StoreContext = createContext();
 
+const initialState = { data: [], loading: true, error: null };
+
 export const StoreContextProvider = ({ children }) => {
-  const [products, loading, error] = useDataApi('https://fakestoreapi.com/products');
+  const [products, loading, error] = useDataApi('https://fakestoreapi.com/products', initialState);
   const [counters] = useCounters(products);
 
   return (

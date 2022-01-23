@@ -1,23 +1,19 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useEffect, useReducer } from 'react';
+import { dataFetchReducer } from './dataFetchReducer';
 
-const useDataApi = (url) => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const useDataApi = (url, initialState) => {
+  const [state, dispatch] = useReducer(dataFetchReducer, initialState);
 
   const loadProducts = () => {
-    setLoading(true);
-    setError(null);
     const fetchURL = async () => {
+      dispatch({ type: 'LOADING' });
       try {
         const result = await axios.get(url);
-        setData(result.data);
+        dispatch({ type: 'SUCCESS', payload: result.data });
       } catch (error) {
-        setError('There was an error fetching the data');
+        dispatch({ type: 'FAILURE', payload: 'There was an error fetching the data' });
         console.log(error);
-      } finally {
-        setLoading(false);
       }
     };
     fetchURL();
@@ -25,7 +21,7 @@ const useDataApi = (url) => {
 
   useEffect(loadProducts, []);
 
-  return [data, loading, error];
+  return [state.data, state.loading, state.error];
 };
 
 export default useDataApi;
