@@ -6,7 +6,8 @@ const useCounters = (products) => {
 
   const loadCounters = () => {
     if (!counters.length && products.length) {
-      products.forEach(() => setCounters((counters) => [...counters, countGenerator()]));
+      const newCounters = products.map((_) => countGenerator());
+      setCounters(newCounters);
     }
   };
 
@@ -27,7 +28,7 @@ const useCounters = (products) => {
   useEffect(loadCounters, [products]);
   useEffect(decreaseCounters, [counters]);
 
-  return [counters, setCounters];
+  return [counters];
 };
 
 export default useCounters;
